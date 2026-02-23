@@ -39,22 +39,30 @@ const languages = [
 
 function App() {
   const [buttonActive, setButtonActive] = useState(null);
-
+  const selectedLanguage = languages.find((element) => element.id === buttonActive)  // Cerco l'elemento che ha come id l'id del bottone premuto
   return (
     <>
       <Header />
       <div className="container">
-        <ul>
+        <ul className="list-unstyled d-flex pt-3 gap-2">
           {languages.map((elemento) =>
             <li key={elemento.id}>
               <button
                 onClick={() => setButtonActive(buttonActive === elemento.id ? null : elemento.id)}
                 className={buttonActive === elemento.id ? "btn btn-warning" : "btn btn-primary"}
               >{elemento.title}</button>
-              {buttonActive === elemento.id && elemento.description}
-            </li>
-          )}
+
+            </li>)}
+
         </ul>
+
+        {selectedLanguage && (
+          <div className="card pt-5">
+            <h1 className='text-center'>{selectedLanguage.title}</h1>
+            <div className="card-body">
+              {selectedLanguage.description}
+            </div>
+          </div>)}
       </div>
     </>
   )
