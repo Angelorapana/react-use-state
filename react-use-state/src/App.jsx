@@ -49,7 +49,7 @@ function App() {
             <li key={elemento.id}>
               <button
                 onClick={() => setButtonActive(elemento.id)}>{elemento.title}</button>
-
+              {buttonActive === elemento.id && elemento.description}
             </li>
           )}
         </ul>
