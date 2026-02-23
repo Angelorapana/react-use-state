@@ -48,7 +48,7 @@ function App() {
           {languages.map((elemento) =>
             <li key={elemento.id}>
               <button
-                onClick={() => setButtonActive(elemento.id)}>{elemento.title}</button>
+                onClick={() => setButtonActive(buttonActive === elemento.id ? null : elemento.id)}>{elemento.title}</button>
               {buttonActive === elemento.id && elemento.description}
             </li>
           )}
